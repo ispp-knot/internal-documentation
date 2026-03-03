@@ -30,6 +30,19 @@ TypeScript + tipos (_typescript, @types/node, @types/react, @types/react-dom_): 
 
 Linting (_eslint, eslint-config-next_): Detectan errores, malas prácticas y mantienen consistencia en el código.
 
+### Configurar el entorno
+
+Para el frontend actualmente necesita la dirección del backend para hacer llamadas a este.
+
+Para ello es necesario copiar la plantilla `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+por defecto, la ruta del backend puesta en el example es *https://localhost:8080*. 
+Si se desea cambiar por la suya del backend, simplemente ir al .env creado y cambiar la URL por la deseada
+
 ## Instalación
 
 Todas las dependencias están en el package.json, ejecutando el siguiente comando se debería de instalar todo lo necesario para ejecutar el frontend:
