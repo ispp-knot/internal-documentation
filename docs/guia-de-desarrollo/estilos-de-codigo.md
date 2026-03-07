@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Esta guía **NO** es una guía de estilo de sintaxis, aunque se aborda la sintaxis se espera que el equipo haga uso de herramientas de linting automaticas. Esto nos permite asegurarnos que todos estamos usando las mismas convenciones. El uso de las herramientas de linting se aborda en [Linting Automático](./lint.md).
 
-Esta guía **NO** es una guía de arquitectura del proyecto para eso existe [Arquitectura de Spring](./arquitectura-spring.md)
+Esta guía **NO** es una guía de arquitectura del proyecto para eso existe [Arquitectura de Spring](./backend.md)
 
 Esta guía **SI** es una guía de conceptos y buenas practicas a seguir a la hora de desarrollar el código del proyecto. Incumplir cualquiera de las siguientes instrucciones es motivo de rechazar una PR.
 
