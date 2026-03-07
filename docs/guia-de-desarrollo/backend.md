@@ -80,3 +80,32 @@ public class UserService {
 El nombre de las tablas debe ser `snake_case`
 
 ```@Table(name = "outfit_tags")```
+
+
+## Estructura de archivos
+
+Se utiliza una estructura de archivos basada en modulos, en esta existe una carpeta `modules` y dentro de ella una carpeta para cada modulo. En esas carpetas hay carpetas para `models`, `repositories`,`services`,`controllers`,`dtos`,`exception`. Además hay una carpeta `common` para aquellas cosas que sean compartidas entre modulos. 
+```
+├── modules
+│   ├── auth
+│   │   ├── controllers
+│   │   ├── dtos
+│   │   ├── exceptions
+│   │   ├── models
+│   │   ├── repositories
+│   │   └── services
+│   ├── clients
+│   │   ├── controllers
+│   │   ├── dtos
+│   │   ├── exceptions
+│   │   ├── models
+│   │   ├── repositories
+│   │   └── services
+│   ├── common
+│   │   ├── exceptions
+│   │   ├── models
+│   │   └── validators
+...
+```
+
+
