@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # 🌿 Trabajar en el backend
@@ -79,12 +79,12 @@ public class UserService {
 
 El nombre de las tablas debe ser `snake_case`
 
-```@Table(name = "outfit_tags")```
-
+`@Table(name = "outfit_tags")`
 
 ## Estructura de archivos
 
-Se utiliza una estructura de archivos basada en módulos, en esta existe una carpeta `modules` y dentro de ella una carpeta para cada módulo. En esas carpetas hay carpetas para `models`, `repositories`,`services`,`controllers`,`dtos`,`exception`. Además hay una carpeta `common` para aquellas cosas que sean compartidas entre módulos. 
+Se utiliza una estructura de archivos basada en módulos, en esta existe una carpeta `modules` y dentro de ella una carpeta para cada módulo. En esas carpetas hay carpetas para `models`, `repositories`,`services`,`controllers`,`dtos`,`exception`. Además hay una carpeta `common` para aquellas cosas que sean compartidas entre módulos.
+
 ```
 ├── modules
 │   ├── auth
@@ -107,5 +107,3 @@ Se utiliza una estructura de archivos basada en módulos, en esta existe una car
 │   │   └── validators
 ...
 ```
-
-
