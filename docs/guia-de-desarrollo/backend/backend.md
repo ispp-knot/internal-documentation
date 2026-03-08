@@ -36,6 +36,8 @@ Reciben las peticiones HTTP, es el punto de entrada y salida de nuestros datos d
 
 Todos los controladores necesitan ser testeados.
 
+En caso de recibir y/o devolver objetos que representen entidades de la base de datos deben estar en forma de DTO.
+
 ## Lombok
 
 Se deben usar anotaciones de Lombok para evitar código boilerplate.
