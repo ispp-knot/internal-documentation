@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 📦 DTOs
 
-En esta guía se detallan algunos aspectos a tener en cuenta sobre los DTO tras aplicar la refactorización.
+En esta guía se detallan algunos aspectos a tener en cuenta sobre los DTO.
 
 ## Aspectos generales
 
