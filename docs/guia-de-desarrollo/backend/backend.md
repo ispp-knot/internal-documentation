@@ -109,3 +109,29 @@ Se utiliza una estructura de archivos basada en módulos, en esta existe una car
 │   │   └── validators
 ...
 ```
+## Trabajar con datos geograficos
+
+`CoordinatesService` es un servicio que envuelve `GeometryFactory` de JTS para crear objetos geométricos (`Point`, `LineString`, `Polygon`) a partir de coordenadas.
+
+* Garantiza **coherencia en SRID y precisión** en toda la aplicación.
+* Centraliza la lógica de creación de geometrías en un solo lugar.
+* Elimina mucho código repetitivo para inicializar y congigurar el `GeometryFactory`.
+
+Aqui teneis un ejemplo de su uso.
+
+```java
+@Service
+@RequiredArgsConstructor
+public class StoreService {
+
+    private final CoordinatesService coordinatesService;
+
+    public Store createStore(String name, double lon, double lat) {
+        Store store = new Store();
+        store.setName(name);
+        store.setLocation(coordinatesService.createPoint(lon, lat));
+        return store;
+    }
+}
+```
+
