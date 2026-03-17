@@ -149,28 +149,3 @@ const [imageFile, setImageFile] = useState<File | null>(null);
 
 Úsalo con `Controller` cuando quieras que RHF controle la validación de la imagen junto con el resto del formulario. Usa `useState` cuando la imagen sea opcional y no necesites validarla.
 
----
-
-## Errores de API
-
-RHF no sabe del backend, así que los errores de API se manejan con un `useState` aparte, como en `loginForm.tsx`:
-
-```tsx
-const [apiError, setApiError] = useState<string | null>(null);
-
-async function onSubmit(data: FormValues) {
-  setApiError(null);
-  try {
-    await login.fetch({ body: data });
-  } catch (err) {
-    if (err instanceof FetchError && err.response?.status === 403) {
-      setApiError('Credenciales incorrectos.');
-    } else {
-      setApiError('Ha ocurrido un error.');
-    }
-  }
-}
-
-{apiError && <p className="text-xs text-destructive">{apiError}</p>}
-```
-
