@@ -26,9 +26,22 @@ docker compose up -d
 
 ```bash
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev-migration,seed
+
+# Si se sabe que las imágenes ya están subidas a Cloudinary, que en el entorno de desarrollo ya lo están, se puede saltar:
+SEED_UPLOAD_IMAGES=false ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev-migration,seed
 ```
 
 Al arrancar, Liquibase aplica las migraciones (incluida la 007 con los datos de referencia) y después el seeder inserta los datos. La aplicación termina sola al acabar porque el perfil `seed` deshabilita el servidor web.
+
+También se puede seedear el perfil de desarrollo, para poder tener datos de prueba durante el desarrollo. Sin embargo,
+un cambio al seeder o a las migraciones ha de ser probado contra `dev-migration`.
+
+```bash
+./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev,seed
+
+# O, si ya se han subido las imágenes (casi siempre es así)
+SEED_UPLOAD_IMAGES=false ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev,seed
+```
 
 ### Parámetros configurables
 
@@ -37,18 +50,15 @@ Los parámetros se pueden cambiar en `src/main/resources/application-seed.yaml` 
 | Parámetro | Por defecto | Descripción |
 |-----------|-------------|-------------|
 | `seed.random-seed` | `42` | Semilla aleatoria (misma semilla → mismos datos) |
-| `seed.store-count` | `5` | Número de tiendas aleatorias |
-| `seed.products-per-store` | `6` | Productos por tienda aleatoria |
-| `seed.social-networks-per-store` | `2` | Redes sociales por tienda aleatoria |
-| `seed.outfits-per-store` | `2` | Outfits por tienda aleatoria |
 | `seed.client-count` | `10` | Número de clientes aleatorios |
+| `seed.uploadImages` | `true` | Si hace falta subir las imágenes |
 
 Ejemplo con parámetros distintos:
 
 ```bash
 ./mvnw spring-boot:run \
   -Dspring-boot.run.profiles=dev-migration,seed \
-  -Dspring-boot.run.arguments="--seed.store-count=20 --seed.client-count=50"
+  -Dspring-boot.run.arguments="--seed.client-count=20 --seed.random-seed=50"
 ```
 
 ### Idempotencia
