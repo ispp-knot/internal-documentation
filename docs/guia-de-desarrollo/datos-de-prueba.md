@@ -28,7 +28,7 @@ docker compose up -d
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev-migration,seed
 
 # Si se sabe que las imágenes ya están subidas a Cloudinary, que en el entorno de desarrollo ya lo están, se puede saltar:
-SEED_UPLOAD_IMAGES=false ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev-migration,seed
+./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev-migration,seed -Dspring-boot.run.arguments="--seed.uploadImages=false"
 ```
 
 Al arrancar, Liquibase aplica las migraciones (incluida la 007 con los datos de referencia) y después el seeder inserta los datos. La aplicación termina sola al acabar porque el perfil `seed` deshabilita el servidor web.
@@ -40,7 +40,7 @@ un cambio al seeder o a las migraciones ha de ser probado contra `dev-migration`
 ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev,seed
 
 # O, si ya se han subido las imágenes (casi siempre es así)
-SEED_UPLOAD_IMAGES=false ./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev,seed
+./mvnw clean spring-boot:run -Dspring-boot.run.profiles=dev,seed -Dspring-boot.run.arguments="--seed.uploadImages=false"
 ```
 
 ### Parámetros configurables
