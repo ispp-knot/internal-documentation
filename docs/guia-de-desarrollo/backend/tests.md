@@ -42,3 +42,27 @@ class AuthControllerTest {
   }
 }
 ```
+
+## De carga
+
+Los tests de carga se encuentran en `src/test/java/ispp/project/dondesiempre/DondeSiempreLoadTests.java`, y se saltan
+por defecto. Para que funcionen correctamente, la base de datos tiene que estar seedeada. Para ejecutarlos, se pueden
+usar los siguientes comandos:
+
+```bash
+# Empty test database
+docker compose down -v postgres-test
+docker compose up -d postgres-test
+
+# Seed test database (the load test requires it)
+./mvnw clean spring-boot:run -Dspring-boot.run.profiles=test,seed -Dspring-boot.run.arguments="--seed.uploadImages=false" ; \
+mvnw.cmd clean spring-boot:run -Dspring-boot.run.profiles=test,seed -Dspring-boot.run.arguments="--seed.uploadImages=false" ; \
+
+# Run tests
+./mvnw test -Dexcluded.groups= -Dgroups=load
+mvnw.cmd test -Dexcluded.groups= -Dgroups=load
+
+# You'll want to empty the database again so that the normal tests work
+docker compose down -v postgres-test
+docker compose up -d postgres-test
+```
